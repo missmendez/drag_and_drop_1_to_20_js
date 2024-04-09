@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Drag & Drop 1–20</title>
+  <script src="./tsparticles.confetti.bundle.min.js"></script>
+  <script src="./app.js"></script>
+  <style>
+    @font-face {
+      font-family: 'comic';
+      src: url(./fonts/comic.woff2) format('woff2');
+    }
+
+    @font-face {
+      font-family: 'comicbd';
+      font-weight: bold;
+      src: url(./fonts/comicbd.woff2) format('woff2');
+    }
+
+    * { 
+      font-family: 'Comic Sans MS', 'comic', sans-serif; 
+      font-weight: bold;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes panno {
+      from {
+        background-position: 0% 0%;
+        /* transform: translate(0px, 0px); */
+      }
+      to {
+        background-position: 100% 100%;
+        /* transform: translate(96px, 96px); */
+      }
+    }
+
+    body {
+      overflow: hidden;
+      touch-action: none;
+      width: 100%;
+      height: 100vh;
+
+      background-image: url("./images/Background/Pink.png");
+      image-rendering: pixelated;
+      background-size: 96px 96px;
+      background-repeat: repeat;
+      animation: panno linear 473s infinite;
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    nav {
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    #restartButton {
+      /* margin-left: auto; */
+      display: block;
+      height: 42px;
+      image-rendering: pixelated;
+    }
+
+    #restartButton:hover {
+      animation: shiftDown 0.25s step-start;
+    }
+
+    #restartButton:active {
+      transform: translateY(3px);
+    }
+
+    @keyframes shiftDown {
+      to { transform: translateY(3px); } 
+    }
+
+    main {
+      font-size: min(4.5vw, 6vh);
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    .grid .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 0.8em;
+    }
+
+    .grid .col {
+      width: 1.95em;
+      height: 1.95em;
+      background-color: rgb(85, 38, 99);
+      margin: 0 0.4em;
+      opacity: 0.61;
+    }
+
+    .grid .col.mouseoverHighlight {
+      background-color: rgb(165, 64, 157) !important;
+    }
+
+    .options {
+      margin-top: 0.5em;
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+    }
+
+    .options .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 0.3em;
+    }
+
+    .highlighted {
+      outline: 0.1em solid yellow;
+    }
+
+    .darker {
+      background-color: rgb(39, 0, 51) !important;
+      opacity: 0.7 !important;
+    }
+
+    .optionContainer {
+      width: 1.75em;
+      height: 1.5em;
+      margin: 0 0.15em;
+    }
+
+    .options .col {
+      width: 1.75em;
+      height: 1.5em;
+      background-color: blueviolet;
+      /* margin: 0 0.15em; */
+      border-radius: 0.2em;
+      text-align: center;
+      color: white;
+      -webkit-text-stroke: 0.04em black;
+      user-select: none;
+    }
+
+    svg {
+      padding-top: 0.1em;
+      display: block;
+    }
+
+    svg text{
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: white;
+      stroke: black;
+      stroke-width: 0.08em;
+      stroke-linejoin: round;
+      paint-order: stroke;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="./images/Buttons/Restart.png" id="restartButton">
+  </nav>
+  <main>
+    <div class="grid">
+      <div class="row">
+        <div id="blank1" class="col highlighted darker"></div>
+        <div id="blank2" class="col"></div>
+        <div id="blank3" class="col"></div>
+        <div id="blank4" class="col"></div>
+        <div id="blank5" class="col"></div>
+      </div>
+      <div class="row">
+        <div id="blank6" class="col"></div>
+        <div id="blank7" class="col"></div>
+        <div id="blank8" class="col"></div>
+        <div id="blank9" class="col"></div>
+        <div id="blank10" class="col"></div>
+      </div>
+      <div class="row">
+        <div id="blank11" class="col"></div>
+        <div id="blank12" class="col"></div>
+        <div id="blank13" class="col"></div>
+        <div id="blank14" class="col"></div>
+        <div id="blank15" class="col"></div>
+      </div>
+      <div class="row">
+        <div id="blank16" class="col"></div>
+        <div id="blank17" class="col"></div>
+        <div id="blank18" class="col"></div>
+        <div id="blank19" class="col"></div>
+        <div id="blank20" class="col"></div>
+      </div>
+    </div>
+
+    <div class="options">
+      <div class="row">
+        <div class="optionContainer"> <div id="option1" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 1 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option2" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 2 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option3" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 3 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option4" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 4 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option5" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 5 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option6" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 6 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option7" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 7 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option8" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 8 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option9" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 9 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option10" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 10 </text> </svg> </div> </div>
+      </div>
+      <div class="row">
+        <div class="optionContainer"> <div id="option11" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 11 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option12" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 12 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option13" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 13 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option14" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 14 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option15" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 15 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option16" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 16 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option17" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 17 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option18" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 18 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option19" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 19 </text> </svg> </div> </div>
+        <div class="optionContainer"> <div id="option20" class="col"> <svg width="100%" height="100%"> <text x="50%" y="50%"> 20 </text> </svg> </div> </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
