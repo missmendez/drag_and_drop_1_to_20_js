@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Drag & Drop 1–20</title>
   <script src="./tsparticles.confetti.bundle.min.js"></script>
   <script src="./app.js"></script>
@@ -21,6 +21,7 @@
     * { 
       font-family: 'Comic Sans MS', 'comic', sans-serif; 
       font-weight: bold;
+      touch-action: none;
     }
 
     html, body {
@@ -155,6 +156,7 @@
     svg {
       padding-top: 0.1em;
       display: block;
+      user-select: none;
     }
 
     svg text{
@@ -165,6 +167,7 @@
       stroke-width: 0.08em;
       stroke-linejoin: round;
       paint-order: stroke;
+      user-select: none;
     }
   </style>
 </head>

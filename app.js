@@ -97,6 +97,8 @@ function lerp(s, e, t) {
 
 function makeDraggable(elem) {
   elem.ondragstart = () => false;
+  // disable holding to select even though user-select is none
+  elem.ontouchstart = () => false;
 
   elem.beingDraggedByPointer = undefined;
 
@@ -325,6 +327,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
   resizeToFit();
 
   document.getElementById("restartButton").onclick = restart;
+
+  // no double click to zoom
+  document.ondblclick = function(e) {
+    e.preventDefault();
+  }
 });
 
 window.addEventListener("resize", (e) => {
