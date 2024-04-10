@@ -12,8 +12,6 @@ class NoCacheHTTPRequestHandler(
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.send_header('Pragma', 'no-cache')
         self.send_header('Expires', '0')
-        # self.send_header('Last-Modified', self.date_time_string())
-        print(self.headers)
 
 if __name__ == '__main__':
     http.server.test(
